@@ -1,0 +1,102 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.example.kotlindemo'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.example.kotlindemo"
+        minSdk 24
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        externalNativeBuild {
+            cmake {
+                cppFlags ""
+            }
+        }
+        ndk {
+            abiFilters 'x86_64', 'armeabi-v7a', 'arm64-v8a'
+        }
+    }
+
+    externalNativeBuild {
+        cmake {
+            path "src/main/cpp/CMakeLists.txt"
+        }
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    dataBinding {
+        enabled = true
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.9.0'
+    implementation 'androidx.appcompat:appcompat:1.5.1'
+    implementation 'com.google.android.material:material:1.6.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.3'
+    implementation files('libs\\base64.jar')
+    implementation files('libs\\commons-codec-1.9.jar')
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
+    //kotlin anko
+    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk7:1.9.10'
+    implementation "org.jetbrains.anko:anko-commons:0.10.5"
+
+    //okhttp
+    implementation 'com.tsy:myokhttp:1.1.4'
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+
+    //rxjava
+    implementation 'io.reactivex.rxjava2:rxandroid:2.0.1'
+    implementation 'io.reactivex.rxjava2:rxjava:2.1.0'
+    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+    implementation 'com.jakewharton.rxbinding2:rxbinding:2.0.0'
+
+    //retrofit  Gson
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+
+    //matisse图片选择器
+    implementation project(':library:matisse')
+    implementation project(':library:imageEditor')
+
+    //引用鲁班算法压缩图片，缩小体积约为原来的1/8
+    implementation 'top.zibin:Luban:1.1.8'
+    implementation project(':library:image_compress')//图片压缩工具
+    implementation project(':library:imagepicker')//图片，视频文件选择,替换matisse的视频选择
+
+    //Glide
+    def GLIDE_VERSION = "4.9.0"
+    implementation "com.github.bumptech.glide:glide:${GLIDE_VERSION}"
+    annotationProcessor "com.github.bumptech.glide:compiler:${GLIDE_VERSION}"
+    implementation "com.zlc.glide:webpdecoder:1.4.${GLIDE_VERSION}"  //使用glide支持webp图片加载
+
+    //下拉刷新上拉加载
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-14'
+    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-14'
+
+}
+

@@ -1,0 +1,43 @@
+pluginManagement {
+    repositories {
+        maven { url 'https://repo1.maven.org/maven2/' }//友盟仓库
+        maven{ url 'https://maven.aliyun.com/repository/public/'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+
+        maven { url 'https://developer.huawei.com/repo/'}//华为推送服务
+
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com' }
+        jcenter()
+        google()
+        mavenLocal()
+        mavenCentral()
+        maven {url 'https://dl.bintray.com/jetbrains/anko'}  //kotlin anko
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        maven { url 'https://repo1.maven.org/maven2/' }//友盟仓库
+        maven{ url 'https://maven.aliyun.com/repository/public/'}
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven{ url 'https://maven.aliyun.com/repository/jcenter'}
+        maven { url 'https://developer.huawei.com/repo/'}//华为推送服务
+
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.google.com' }
+        jcenter()
+        google()
+        mavenLocal()
+        mavenCentral()
+        maven {url 'https://dl.bintray.com/jetbrains/anko'}  //kotlin anko
+    }
+}
+
+rootProject.name = "KotlinDemo"
+include ':app',
+':library:imagepicker',
+':library:imageEditor',
+':library:image_compress',
+':library:matisse'
