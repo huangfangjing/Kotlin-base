@@ -6,6 +6,7 @@ import com.example.kotlindemo.utils.DeviceUtils
 
 class MyApplication : Application() {
 
+    //aaaaa
 
     override fun onCreate() {
         super.onCreate()
